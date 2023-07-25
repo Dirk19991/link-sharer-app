@@ -1,3 +1,9 @@
-div {
-  color: red;
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+html {
+  font-family: 'Instrument Sans', sans-serif;
+}
+
+body {
+  background-color: rgb(250, 250, 250);
 }
