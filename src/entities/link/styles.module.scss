@@ -1,0 +1,62 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: rgb(250, 250, 250);
+  border-radius: 12px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  color: var(--darkGrey);
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.linkNumber {
+  font-weight: 700;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--darkGrey);
+  margin-bottom: 5px;
+}
+
+.select {
+  margin-bottom: 15px;
+}
+
+.inputWrapper {
+  position: relative;
+}
+
+.input {
+  border-radius: 10px;
+  height: 38px;
+  width: 100%;
+  border: 1px solid rgb(204, 204, 204);
+  position: relative;
+  padding-left: 38px;
+
+  &:focus {
+    outline: 2px solid var(--darkViolet);
+    border: 1px transparent solid;
+  }
+}
+
+.linkIcon {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  z-index: 2;
+
+  > img {
+    height: 100%;
+    width: 100%;
+  }
+}
