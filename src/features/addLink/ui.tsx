@@ -1,18 +1,18 @@
 import { AddLinkButton } from 'entities/buttons/addLinkButton';
 import styles from './styles.module.scss';
-import { useAppDispatch, useAppSelector } from 'app/store';
+import { useAppSelector } from 'app/store';
 import { add, remove } from './model/slice';
 import { Link } from 'entities/link';
 
 export const AddLink = () => {
   const links = useAppSelector(state => state.addLink.links);
   const activeLinks = links.filter(elem => elem.active === true);
-  const dispatch = useAppDispatch();
-
+  const activeLinksQuantity = useAppSelector(
+    state => state.addLink.activeLinks,
+  );
   return (
     <div className={styles.wrapper}>
-      <AddLinkButton />
-      <button onClick={() => dispatch(add())}></button>
+      <AddLinkButton activeLinksQuantity={activeLinksQuantity} add={add} />
       {activeLinks.map((elem, index) => {
         if (elem.active) {
           return (

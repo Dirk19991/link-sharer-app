@@ -1,12 +1,13 @@
+import { Platform } from 'features/addLink/model/types';
 import { StylesConfig } from 'react-select';
 
 export interface WebsiteOption {
-  readonly value: string;
+  readonly value: Platform;
   readonly label: string;
   readonly icon: string;
 }
 
-export const options = [
+export const options: WebsiteOption[] = [
   { value: 'Github', label: 'Github', icon: './websites/github.svg' },
   { value: 'Facebook', label: 'Facebook', icon: './websites/facebook.svg' },
   { value: 'Linkedin', label: 'LinkedIn', icon: './websites/linkedin.svg' },
@@ -37,6 +38,7 @@ export const dot = (icon: string) => ({
 export const colourStyles: StylesConfig<WebsiteOption> = {
   control: styles => ({
     ...styles,
+    cursor: 'pointer',
     backgroundColor: 'white',
     borderRadius: '10px',
   }),
@@ -50,6 +52,7 @@ export const colourStyles: StylesConfig<WebsiteOption> = {
   },
 
   container: styles => ({ ...styles, borderRadius: '10px' }),
+  placeholder: styles => ({ ...styles, opacity: '0.7' }),
   singleValue: (styles, { data }) => ({
     ...styles,
     ...dot(data.icon),

@@ -3,6 +3,7 @@ import styles from './styles.module.scss';
 import Select from 'react-select';
 import { useAppDispatch } from 'app/store';
 import { colourStyles, options } from './model/select';
+import { changePlatform } from 'features/addLink/model/slice';
 
 export const Link = ({ id, index, remove }: LinkProps) => {
   const dispatch = useAppDispatch();
@@ -10,15 +11,21 @@ export const Link = ({ id, index, remove }: LinkProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.flex}>
-        <div className={styles.linkNumber}>Link #{index}</div>
-        <div onClick={() => dispatch(remove(id))}>Remove</div>
+        <div className={styles.linkNumber}>Link #{index + 1}</div>
+        <div className={styles.remove} onClick={() => dispatch(remove(id))}>
+          Remove
+        </div>
       </div>
       <div className={styles.label}>Platform</div>
       <Select
-        defaultValue={options[0]}
+        isMulti={false}
         className={styles.select}
         options={options}
         styles={colourStyles}
+        placeholder={'Select platform'}
+        onChange={e => {
+          dispatch(changePlatform({ id: id, platform: e && e.value }));
+        }}
       />
       <div className={styles.label}>Link</div>
       <div className={styles.inputWrapper}>

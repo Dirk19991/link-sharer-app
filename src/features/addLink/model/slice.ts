@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { LinksState } from './types';
+import { LinksState, Platform } from './types';
 
 const initialState: LinksState = {
   links: [
     {
       active: true,
-      platform: 'Github',
-      link: '',
+      platform: null,
+      link: null,
       id: 1,
     },
     {
@@ -44,13 +44,10 @@ export const addLinkSlice = createSlice({
   reducers: {
     add: state => {
       if (state.activeLinks === 5) return;
-      for (let i = 0; i < state.links.length; i++) {
-        if (state.links[i].active === true) continue;
-        if (state.links[i].active === false) {
-          state.links[i].active = true;
-          break;
-        }
-      }
+      const biggestInactiveID = state.links
+        .filter(link => link.active === false)
+        .sort((a, b) => b.id - a.id)[0];
+      biggestInactiveID.active = true;
       state.activeLinks++;
     },
     remove: (state, action: PayloadAction<number>) => {
@@ -66,10 +63,20 @@ export const addLinkSlice = createSlice({
         }
       });
     },
+    changePlatform: (
+      state,
+      action: PayloadAction<{ id: number; platform: Platform }>,
+    ) => {
+      state.links.map(elem => {
+        if (elem.id === action.payload.id) {
+          elem.platform = action.payload.platform;
+        }
+      });
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { add, remove } = addLinkSlice.actions;
+export const { add, remove, changePlatform } = addLinkSlice.actions;
 
 export default addLinkSlice.reducer;

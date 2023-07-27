@@ -1,7 +1,6 @@
 .wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   background-color: white;
   width: 40%;
   padding-top: 80px;
@@ -13,6 +12,8 @@
 .phone {
   width: 310px;
   height: auto;
+  max-height: 563px;
+  position: relative;
 
   > img {
     width: 100%;

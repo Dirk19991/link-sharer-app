@@ -1,21 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap');
 
+:root {
+  --darkViolet: rgb(99, 60, 255);
+  --lightViolet: rgb(239, 235, 255);
+  --darkGrey: rgb(115, 115, 115);
+  --middleGrey: rgb(238, 238, 238);
+  --lightGrey: rgb(250, 250, 250);
+}
+
 html {
   font-family: 'Instrument Sans', sans-serif;
+  font-size: 16px;
 }
 
 body {
-  background-color: rgb(250, 250, 250);
+  background-color: var(--lightGrey);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-:root {
-  --darkViolet: rgb(99, 60, 255);
-  --lightViolet: rgb(239, 235, 255);
-  --darkGrey: rgb(115, 115, 115);
 }

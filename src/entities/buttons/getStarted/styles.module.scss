@@ -1,0 +1,23 @@
+.wrapper {
+  width: 100%;
+  background-color: var(--lightGrey);
+  border-radius: 12px;
+  margin-top: 15px;
+  padding: 60px 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.header {
+  font-size: 2rem;
+}
+
+.text {
+  font-size: 0.9rem;
+  line-height: 1.4rem;
+  color: var(--darkGrey);
+}
