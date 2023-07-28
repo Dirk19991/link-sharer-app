@@ -44,10 +44,16 @@ export const addLinkSlice = createSlice({
   reducers: {
     add: state => {
       if (state.activeLinks === 5) return;
-      const biggestInactiveID = state.links
-        .filter(link => link.active === false)
-        .sort((a, b) => b.id - a.id)[0];
-      biggestInactiveID.active = true;
+      for (let i = 0; i < state.links.length; i++) {
+        if (state.links[i].active === true) continue;
+        if (state.links[i].active === false) {
+          // всегда добавляем новую ссылку в конец списка
+          const currentLink = state.links.splice(i, 1)[0];
+          state.links.push(currentLink);
+          state.links[state.links.length - 1].active = true;
+          break;
+        }
+      }
       state.activeLinks++;
     },
     remove: (state, action: PayloadAction<number>) => {
