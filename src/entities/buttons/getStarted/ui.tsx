@@ -2,8 +2,8 @@ import { useAppSelector } from 'app/store';
 import styles from './styles.module.scss';
 
 export const GetStarted = () => {
-  const activeLinks = useAppSelector(state => state.addLink.activeLinks);
-  return activeLinks > 0 ? (
+  const links = useAppSelector(state => state.addLink.links);
+  return links.length > 0 ? (
     <></>
   ) : (
     <div className={styles.wrapper}>

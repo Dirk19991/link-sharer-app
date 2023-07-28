@@ -17,7 +17,7 @@ export const options: WebsiteOption[] = [
   {
     value: 'Stackoverflow',
     label: 'Stack Overflow',
-    icon: './websites/stackOverflow.svg',
+    icon: './websites/stackoverflow.svg',
   },
 ];
 

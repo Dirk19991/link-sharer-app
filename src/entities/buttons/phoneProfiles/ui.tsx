@@ -1,5 +1,6 @@
 import { useAppSelector } from 'app/store';
 import styles from './styles.module.scss';
+import { PhoneProfileButton } from './phoneProfileButton';
 
 export const PhoneProfiles = () => {
   const links = useAppSelector(state => state.addLink.links);
@@ -7,14 +8,13 @@ export const PhoneProfiles = () => {
   console.log(links);
   return (
     <div className={styles.wrapper}>
-      {links.map(link => {
-        if (link.platform !== null) {
-          return <div>{link.platform}</div>;
-        }
-        if (link.platform === null) {
-          return <div>Placeholder</div>;
-        }
-      })}
+      {links.map(link => (
+        <PhoneProfileButton
+          key={link.id}
+          platform={link.platform}
+          link={link.link}
+        />
+      ))}
     </div>
   );
 };

@@ -21,7 +21,10 @@ export const addLinkSlice = createSlice({
       state.links.push({
         platform: null,
         link: null,
-        id: state.links[state.links.length - 1].id + 1,
+        id:
+          state.links.length > 0
+            ? state.links[state.links.length - 1].id + 1
+            : 1,
       });
     },
     remove: (state, action: PayloadAction<number>) => {
@@ -33,10 +36,16 @@ export const addLinkSlice = createSlice({
     ) => {
       state.links[action.payload.index].platform = action.payload.platform;
     },
+    changeLink: (
+      state,
+      action: PayloadAction<{ index: number; link: string | null }>,
+    ) => {
+      state.links[action.payload.index].link = action.payload.link;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { add, remove, changePlatform } = addLinkSlice.actions;
+export const { add, remove, changePlatform, changeLink } = addLinkSlice.actions;
 
 export default addLinkSlice.reducer;
