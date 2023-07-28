@@ -5,14 +5,14 @@ import { useAppDispatch } from 'app/store';
 import { colourStyles, options } from './model/select';
 import { changePlatform } from 'features/addLink/model/slice';
 
-export const Link = ({ id, index, remove }: LinkProps) => {
+export const Link = ({ index, remove }: LinkProps) => {
   const dispatch = useAppDispatch();
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.flex}>
         <div className={styles.linkNumber}>Link #{index + 1}</div>
-        <div className={styles.remove} onClick={() => dispatch(remove(id))}>
+        <div className={styles.remove} onClick={() => dispatch(remove(index))}>
           Remove
         </div>
       </div>
@@ -24,7 +24,7 @@ export const Link = ({ id, index, remove }: LinkProps) => {
         styles={colourStyles}
         placeholder={'Select platform'}
         onChange={e => {
-          dispatch(changePlatform({ id: id, platform: e && e.value }));
+          dispatch(changePlatform({ index: index, platform: e && e.value }));
         }}
       />
       <div className={styles.label}>Link</div>

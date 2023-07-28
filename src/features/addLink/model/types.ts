@@ -9,13 +9,11 @@ export type Platform =
   | null;
 
 export interface Link {
-  active: boolean;
-  platform?: Platform;
-  link?: string | null;
+  platform: Platform;
+  link: string | null;
   id: number;
 }
 
 export interface LinksState {
-  links: [Link, Link, Link, Link, Link];
-  activeLinks: 0 | 1 | 2 | 3 | 4 | 5;
+  links: Link[];
 }

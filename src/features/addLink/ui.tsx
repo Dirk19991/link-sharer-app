@@ -6,21 +6,16 @@ import { Link } from 'entities/link';
 
 export const AddLink = () => {
   const links = useAppSelector(state => state.addLink.links);
-  const activeLinks = links.filter(elem => elem.active === true);
-  const activeLinksQuantity = useAppSelector(
-    state => state.addLink.activeLinks,
-  );
+  console.log(links);
   return (
     <div className={styles.wrapper}>
-      <AddLinkButton activeLinksQuantity={activeLinksQuantity} add={add} />
-      {activeLinks.map((elem, index) => {
-        if (elem.active) {
-          return (
-            <div key={elem.id}>
-              <Link index={index} remove={remove} id={elem.id} />
-            </div>
-          );
-        }
+      <AddLinkButton add={add} />
+      {links.map((elem, index) => {
+        return (
+          <div key={elem.id}>
+            <Link index={index} remove={remove} />
+          </div>
+        );
       })}
     </div>
   );
