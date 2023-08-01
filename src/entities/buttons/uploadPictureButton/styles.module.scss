@@ -15,7 +15,7 @@
   font-weight: 700;
 }
 
-.input {
+.label {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -23,4 +23,36 @@
   height: 100%;
   opacity: 0;
   z-index: 999;
+  cursor: pointer;
+}
+input[type='file'] {
+  display: none;
+}
+
+.buttonText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hiddenButtonText {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 150px;
+  gap: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.whiteIcon {
+  filter: brightness(0) invert(1);
+}
+
+.hidden {
+  display: none;
 }

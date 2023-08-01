@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [detailsActive, setDetailsActive] = useState(false);
-  const [linksActive, setLinksActive] = useState(false);
+  const [linksActive, setLinksActive] = useState(true);
 
   const detailsHandler = () => {
-    setDetailsActive(prev => !prev);
+    setDetailsActive(true);
     setLinksActive(false);
   };
   const linksHandler = () => {
-    setLinksActive(prev => !prev);
+    setLinksActive(true);
     setDetailsActive(false);
   };
 

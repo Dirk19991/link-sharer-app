@@ -1,5 +1,13 @@
+import { useAppSelector } from 'app/store';
 import styles from './styles.module.scss';
 
 export const Circle = () => {
-  return <div className={styles.circle}></div>;
+  const file = useAppSelector(state => state.addPicture.file);
+
+  return (
+    <div
+      style={{ backgroundImage: `url(${file})`, backgroundSize: 'cover' }}
+      className={styles.circle}
+    ></div>
+  );
 };

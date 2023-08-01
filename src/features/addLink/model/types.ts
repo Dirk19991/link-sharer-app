@@ -10,7 +10,10 @@ export type Platform =
 
 export interface Link {
   platform: Platform;
-  link: string | null;
+  link: {
+    value: string | null;
+    validated: 'idle' | 'true' | 'false';
+  };
   id: number;
 }
 
