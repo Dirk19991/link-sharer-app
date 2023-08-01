@@ -13,6 +13,11 @@ import { checkLink } from './model/validation';
 
 export const Link = ({ index, remove }: LinkProps) => {
   const dispatch = useAppDispatch();
+  const allPlatforms = useAppSelector(state =>
+    state.addLink.links.map(elem => elem.platform),
+  );
+
+  console.log(allPlatforms);
   const currentLinkValue = useAppSelector(
     state => state.addLink.links[index].link.value,
   );
@@ -47,6 +52,7 @@ export const Link = ({ index, remove }: LinkProps) => {
         isMulti={false}
         className={styles.select}
         options={options}
+        isOptionDisabled={option => allPlatforms.includes(option.value)}
         styles={colourStyles}
         placeholder={'Select platform'}
         onChange={e => {

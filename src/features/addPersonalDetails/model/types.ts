@@ -12,3 +12,5 @@ export interface PersonalDetailsState {
     validated: 'idle' | 'true' | 'false';
   };
 }
+
+export type PersonalDetailsFields = keyof PersonalDetailsState;

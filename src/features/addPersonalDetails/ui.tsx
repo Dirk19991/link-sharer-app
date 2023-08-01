@@ -4,11 +4,11 @@ import {
   addEmail,
   addName,
   addSurname,
-  validateEmail,
-  validateName,
-  validateSurname,
+  invalidateField,
+  validateField,
 } from './model/slice';
-import { emailValidation, nameValidation } from './model/validation';
+import { checkLink } from './model/validation';
+import { PersonalDetailsFields } from './model/types';
 
 export const AddName = () => {
   const { name, surname, email } = useAppSelector(
@@ -16,55 +16,10 @@ export const AddName = () => {
   );
   const dispatch = useAppDispatch();
 
-  const nameValidationHandler: React.FocusEventHandler<
-    HTMLInputElement
-  > = e => {
-    if (e.target.value === '') {
-      dispatch(validateName('idle'));
-      return;
-    }
-    if (nameValidation.test(e.target.value)) {
-      dispatch(validateName('true'));
-      return;
-    }
-    if (!nameValidation.test(e.target.value)) {
-      dispatch(validateName('false'));
-      return;
-    }
-  };
-
-  const surnameValidationHandler: React.FocusEventHandler<
-    HTMLInputElement
-  > = e => {
-    if (e.target.value === '') {
-      dispatch(validateSurname('idle'));
-      return;
-    }
-    if (nameValidation.test(e.target.value)) {
-      dispatch(validateSurname('true'));
-      return;
-    }
-    if (!nameValidation.test(e.target.value)) {
-      dispatch(validateSurname('false'));
-      return;
-    }
-  };
-
-  const emailValidationHandler: React.FocusEventHandler<
-    HTMLInputElement
-  > = e => {
-    if (e.target.value === '') {
-      dispatch(validateEmail('idle'));
-      return;
-    }
-    if (emailValidation.test(e.target.value)) {
-      dispatch(validateEmail('true'));
-      return;
-    }
-    if (!emailValidation.test(e.target.value)) {
-      dispatch(validateEmail('false'));
-      return;
-    }
+  const validationHandler = (field: PersonalDetailsFields, value: string) => {
+    checkLink(field, value) === 'true'
+      ? dispatch(validateField(field))
+      : dispatch(invalidateField(field));
   };
 
   return (
@@ -73,7 +28,7 @@ export const AddName = () => {
         First name
         <input
           autoComplete="off"
-          onBlur={nameValidationHandler}
+          onBlur={e => validationHandler('name', e.target.value)}
           onChange={e => dispatch(addName(e.target.value))}
           value={name.value}
           className={styles.input}
@@ -91,7 +46,7 @@ export const AddName = () => {
         Last name
         <input
           autoComplete="off"
-          onBlur={surnameValidationHandler}
+          onBlur={e => validationHandler('surname', e.target.value)}
           onChange={e => dispatch(addSurname(e.target.value))}
           value={surname.value}
           className={styles.input}
@@ -109,7 +64,7 @@ export const AddName = () => {
         Email
         <input
           autoComplete="off"
-          onBlur={emailValidationHandler}
+          onBlur={e => validationHandler('email', e.target.value)}
           onChange={e => dispatch(addEmail(e.target.value))}
           value={email.value}
           className={styles.input}
