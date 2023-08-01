@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import MainPage from './main';
 import { Header } from 'widgets/header';
+import { ProfilePage } from './profile';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -8,6 +9,15 @@ const router = createBrowserRouter([
       <>
         <Header />
         <MainPage />
+      </>
+    ),
+  },
+  {
+    path: '/profile',
+    element: (
+      <>
+        <Header />
+        <ProfilePage />
       </>
     ),
   },

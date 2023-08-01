@@ -4,6 +4,7 @@ import { PreviewButton } from 'entities/buttons/preview';
 import { LinksButton } from 'entities/buttons/links';
 import { ProfileDetailsButton } from 'entities/buttons/profileDetails';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header = () => {
   const [detailsActive, setDetailsActive] = useState(false);
@@ -23,11 +24,15 @@ export const Header = () => {
       <div className={styles.headerContent}>
         <Logo />
         <div className={styles.flex}>
-          <LinksButton onClick={linksHandler} active={linksActive} />
-          <ProfileDetailsButton
-            onClick={detailsHandler}
-            active={detailsActive}
-          />
+          <Link to={'/'}>
+            <LinksButton onClick={linksHandler} active={linksActive} />
+          </Link>
+          <Link to={'/profile'}>
+            <ProfileDetailsButton
+              onClick={detailsHandler}
+              active={detailsActive}
+            />
+          </Link>
         </div>
         <PreviewButton />
       </div>
