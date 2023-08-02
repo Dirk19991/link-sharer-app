@@ -5,7 +5,7 @@ import { ProfileDetails } from 'widgets/profileDetails';
 export const ProfilePage = () => {
   return (
     <div className={styles.wrapper}>
-      <Phone />
+      <Phone variant="profile" />
       <ProfileDetails />
     </div>
   );

@@ -5,7 +5,7 @@ import { Links } from 'widgets/links';
 const MainPage = () => {
   return (
     <div className={styles.wrapper}>
-      <Phone />
+      <Phone variant="profile" />
       <Links />
     </div>
   );

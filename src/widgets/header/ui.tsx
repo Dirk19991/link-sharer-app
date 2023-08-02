@@ -1,10 +1,13 @@
 import { Logo } from 'entities/logo';
 import styles from './styles.module.scss';
-import { PreviewButton } from 'entities/buttons/preview';
+import { PreviewButton } from 'entities/buttons/previewButton';
 import { LinksButton } from 'entities/buttons/links';
 import { ProfileDetailsButton } from 'entities/buttons/profileDetails';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { BackToEditor } from 'entities/buttons/backToEditor';
+import { ShareLinkButton } from 'entities/buttons/shareLinkButton';
+import cn from 'classnames';
 
 export const Header = () => {
   const [detailsActive, setDetailsActive] = useState(false);
@@ -18,6 +21,20 @@ export const Header = () => {
     setLinksActive(true);
     setDetailsActive(false);
   };
+
+  const { pathname } = useLocation();
+
+  if (pathname === '/preview') {
+    return (
+      <nav className={cn(styles.wrapper, styles.previewWrapper)}>
+        <div className={cn(styles.headerContent, styles.previewHeaderContent)}>
+          <BackToEditor />
+
+          <ShareLinkButton />
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav className={styles.wrapper}>
@@ -34,7 +51,9 @@ export const Header = () => {
             />
           </Link>
         </div>
-        <PreviewButton />
+        <Link to={'/preview'}>
+          <PreviewButton />
+        </Link>
       </div>
     </nav>
   );

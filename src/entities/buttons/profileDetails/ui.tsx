@@ -7,9 +7,12 @@ export const ProfileDetailsButton = ({
   onClick,
 }: ProfileDetailsProps) => {
   return (
-    <a onClick={onClick} className={cn(styles.button, active && styles.active)}>
+    <div
+      onClick={onClick}
+      className={cn(styles.button, active && styles.active)}
+    >
       <img src="./profile.svg" alt="profile" />
       <p>Profile Details</p>
-    </a>
+    </div>
   );
 };

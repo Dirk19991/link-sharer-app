@@ -1,0 +1,19 @@
+.button {
+  color: rgb(99, 60, 255);
+  border: 1px solid rgb(99, 60, 255);
+  width: 134px;
+  height: 46px;
+  border-radius: 12px;
+  font-weight: 500;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--lightViolet);
+  }
+}

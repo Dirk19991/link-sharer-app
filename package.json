@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:5050/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "classnames": "^2.3.2",
@@ -20,6 +21,8 @@
     "redux-persist": "^6.0.0"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
     "@types/react": "^18.2.16",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

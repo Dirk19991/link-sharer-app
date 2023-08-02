@@ -12,10 +12,10 @@ export const checkLink = (
         return 'idle';
       }
       if (nameValidation.test(value)) {
-        return true;
+        return 'true';
       }
       if (!nameValidation.test(value)) {
-        return false;
+        return 'false';
       }
       break;
     case 'surname':
