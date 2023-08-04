@@ -29,7 +29,6 @@ export const Header = () => {
       <nav className={cn(styles.wrapper, styles.previewWrapper)}>
         <div className={cn(styles.headerContent, styles.previewHeaderContent)}>
           <BackToEditor />
-
           <ShareLinkButton />
         </div>
       </nav>

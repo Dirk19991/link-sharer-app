@@ -8,6 +8,9 @@ const profileSchema = mongoose.Schema({
   youtube: String,
   codewars: String,
   stackoverflow: String,
+  name: String,
+  surname: String,
+  email: String,
 });
 
 const ProfileModel = mongoose.model(
