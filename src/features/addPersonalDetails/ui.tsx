@@ -23,7 +23,7 @@ export const AddName = () => {
   };
 
   async function onClick() {
-    const newPerson = { github: 'ivan', facebook: 'lokh', d: 'test' };
+    const newPerson = { github: 'ivan', facebook: 'lojkh', d: 'test' };
     console.log(JSON.stringify(newPerson));
     const res = await fetch('http://localhost:5050/profiles', {
       method: 'POST',

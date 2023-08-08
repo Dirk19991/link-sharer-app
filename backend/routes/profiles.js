@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
   try {
     await newProfile.save();
     res.status(201).json(newProfile);
+    console.log('success');
   } catch (error) {
     res.status(409).json({ message: 'Error!' });
   }
