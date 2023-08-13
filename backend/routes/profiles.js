@@ -8,9 +8,15 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-  const body = req.body;
-  console.log(body);
+  let currentId = 0;
+  await ProfileModel.findOne()
+    .sort('-id')
+    .then(res => {
+      currentId = res.id;
+    });
+  const body = { ...req.body, id: currentId + 1 };
   const newProfile = new ProfileModel(body);
+
   try {
     await newProfile.save();
     res.status(201).json(newProfile);

@@ -6,7 +6,7 @@ import { ProfileDetailsButton } from 'entities/buttons/profileDetails';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { BackToEditor } from 'entities/buttons/backToEditor';
-import { ShareLinkButton } from 'entities/buttons/shareLinkButton';
+import { ShareLink } from 'features/shareLink';
 import cn from 'classnames';
 
 export const Header = () => {
@@ -29,7 +29,7 @@ export const Header = () => {
       <nav className={cn(styles.wrapper, styles.previewWrapper)}>
         <div className={cn(styles.headerContent, styles.previewHeaderContent)}>
           <BackToEditor />
-          <ShareLinkButton />
+          <ShareLink />
         </div>
       </nav>
     );

@@ -91,7 +91,7 @@ export const AddName = () => {
           </div>
         )}
       </label>
-      <button onClick={onClick}> 34353 </button>
+      <button onClick={onClick}> </button>
     </div>
   );
 };

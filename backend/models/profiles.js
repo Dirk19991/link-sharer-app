@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
 const profileSchema = mongoose.Schema({
+  id: Number,
   github: String,
   facebook: String,
   linkedin: String,

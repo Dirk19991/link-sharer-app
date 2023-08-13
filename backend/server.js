@@ -4,6 +4,9 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import profileRoutes from './routes/profiles.js';
 import 'dotenv/config';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 
 // eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 5050;

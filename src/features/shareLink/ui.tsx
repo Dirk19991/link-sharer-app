@@ -9,8 +9,14 @@ import {
   PersonalDetailsFields,
   PersonalDetailsState,
 } from 'features/addPersonalDetails/model/types';
+import { useState } from 'react';
+import { RotatingLines } from 'react-loader-spinner';
 
-export const ShareLinkButton = () => {
+export const ShareLink = () => {
+  const [loading, setLoading] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
+
   const linksState = useAppSelector(state => state.addLink);
   const personalDetailsState = useAppSelector(
     state => state.addPersonalDetails,
@@ -44,6 +50,7 @@ export const ShareLinkButton = () => {
     }
 
     try {
+      setLoading('loading');
       const newPerson = {
         github: getPlatform(linksState, 'Github'),
         facebook: getPlatform(linksState, 'Facebook'),
@@ -56,7 +63,7 @@ export const ShareLinkButton = () => {
         surname: getPersonalDetail(personalDetailsState, 'surname'),
         email: getPersonalDetail(personalDetailsState, 'email'),
       };
-      console.log(JSON.stringify(newPerson));
+
       const res = await fetch('http://localhost:5050/profiles', {
         method: 'POST',
         body: JSON.stringify(newPerson),
@@ -64,9 +71,12 @@ export const ShareLinkButton = () => {
           'Content-Type': 'application/json',
         },
       });
+      setLoading('success');
+      res.json().then(data => console.log(data));
       return res;
     } catch (error) {
       console.log(error);
+      setLoading('error');
     }
   };
 
@@ -75,7 +85,17 @@ export const ShareLinkButton = () => {
       onClick={shareLinkHandler}
       className={cn(styles.button, !allIsValidated && styles.notAllowed)}
     >
-      Share link
+      {loading !== 'loading' && <div>Share link</div>}
+
+      {loading === 'loading' && (
+        <RotatingLines
+          strokeColor="grey"
+          strokeWidth="5"
+          animationDuration="0.75"
+          width="30"
+          visible={true}
+        />
+      )}
     </div>
   );
 };
