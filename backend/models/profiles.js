@@ -12,6 +12,7 @@ const profileSchema = mongoose.Schema({
   name: String,
   surname: String,
   email: String,
+  image: String,
 });
 
 const ProfileModel = mongoose.model(

@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import addLinkReducer from '../features/addLink/model/slice';
 import addPictureReducer from '../features/addPicture/model/slice';
 import addPersonalDetailsReducer from '../features/addPersonalDetails/model/slice';
+import getIdReducer from '../features/getId/model/slice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 const rootReducer = combineReducers({
   addLink: addLinkReducer,
   addPicture: addPictureReducer,
   addPersonalDetails: addPersonalDetailsReducer,
+  getId: getIdReducer,
 });
 
 import {

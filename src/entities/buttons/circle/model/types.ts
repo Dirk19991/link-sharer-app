@@ -1,3 +1,3 @@
 export interface CircleProps {
-  variant?: 'preview' | 'profile';
+  variant?: 'preview' | 'profile' | 'database';
 }

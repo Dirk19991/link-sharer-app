@@ -11,9 +11,34 @@ import {
 } from 'features/addPersonalDetails/model/types';
 import { useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
+import { storage } from '../../../firebase';
+import {
+  StorageReference,
+  getDownloadURL,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
+import { v4 } from 'uuid';
+
+const uploadImageFromBlob = async (blob: string) => {
+  const response = await fetch(blob);
+  const result = await response.blob();
+  const metadata = {
+    type: 'image/jpeg',
+  };
+  const file = new File([result], 'avatar.jpg', metadata);
+  const imageRef = ref(storage, `images/${file.name + v4()}`);
+  await uploadBytes(imageRef, file);
+  return imageRef;
+};
+
+const getLinkFromFile = async (imageRef: StorageReference) => {
+  const link = await getDownloadURL(imageRef);
+  return link;
+};
 
 export const ShareLink = () => {
-  const [loading, setLoading] = useState<
+  const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
 
@@ -21,10 +46,10 @@ export const ShareLink = () => {
   const personalDetailsState = useAppSelector(
     state => state.addPersonalDetails,
   );
+  const picture = useAppSelector(state => state.addPicture.file);
+
   const allLinksObjects = useAppSelector(selectMappedLinks);
   const allPersonalDetailsObjects = useAppSelector(selectPersonalDetailsValues);
-
-  console.log(linksState, personalDetailsState);
 
   const allIsValidated = checkValidation(
     allLinksObjects.concat(allPersonalDetailsObjects),
@@ -50,7 +75,10 @@ export const ShareLink = () => {
     }
 
     try {
-      setLoading('loading');
+      setStatus('loading');
+      const info = await uploadImageFromBlob(picture);
+      const link = await getLinkFromFile(info);
+
       const newPerson = {
         github: getPlatform(linksState, 'Github'),
         facebook: getPlatform(linksState, 'Facebook'),
@@ -62,8 +90,10 @@ export const ShareLink = () => {
         name: getPersonalDetail(personalDetailsState, 'name'),
         surname: getPersonalDetail(personalDetailsState, 'surname'),
         email: getPersonalDetail(personalDetailsState, 'email'),
+        image: link,
       };
 
+      console.log(newPerson);
       const res = await fetch('http://localhost:5050/profiles', {
         method: 'POST',
         body: JSON.stringify(newPerson),
@@ -71,12 +101,12 @@ export const ShareLink = () => {
           'Content-Type': 'application/json',
         },
       });
-      setLoading('success');
+      setStatus('success');
       res.json().then(data => console.log(data));
       return res;
     } catch (error) {
       console.log(error);
-      setLoading('error');
+      setStatus('error');
     }
   };
 
@@ -85,9 +115,9 @@ export const ShareLink = () => {
       onClick={shareLinkHandler}
       className={cn(styles.button, !allIsValidated && styles.notAllowed)}
     >
-      {loading !== 'loading' && <div>Share link</div>}
+      {status !== 'loading' && <div>Share link</div>}
 
-      {loading === 'loading' && (
+      {status === 'loading' && (
         <RotatingLines
           strokeColor="grey"
           strokeWidth="5"

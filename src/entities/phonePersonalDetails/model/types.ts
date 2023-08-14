@@ -1,3 +1,3 @@
 export interface PhonePersonalDetailsProps {
-  variant?: 'preview' | 'profile';
+  variant?: 'preview' | 'profile' | 'database';
 }

@@ -6,8 +6,6 @@ export const PhoneProfileButton = ({
   platform,
   link,
 }: PhoneProfileButtonProps) => {
-  console.log(platform);
-
   return platform === null ? (
     <div className={styles.wrapper}>
       <div className={styles.arrow}>

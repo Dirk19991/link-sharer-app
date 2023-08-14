@@ -1,3 +1,3 @@
 export interface PhoneProps {
-  variant: 'preview' | 'profile';
+  variant: 'preview' | 'profile' | 'database';
 }

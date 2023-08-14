@@ -4,7 +4,7 @@ import { PreviewButton } from 'entities/buttons/previewButton';
 import { LinksButton } from 'entities/buttons/links';
 import { ProfileDetailsButton } from 'entities/buttons/profileDetails';
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { BackToEditor } from 'entities/buttons/backToEditor';
 import { ShareLink } from 'features/shareLink';
 import cn from 'classnames';
@@ -23,14 +23,20 @@ export const Header = () => {
   };
 
   const { pathname } = useLocation();
+  const { id } = useParams();
+  console.log(id);
 
-  if (pathname === '/preview') {
+  if (pathname === '/preview' || id) {
     return (
       <nav className={cn(styles.wrapper, styles.previewWrapper)}>
-        <div className={cn(styles.headerContent, styles.previewHeaderContent)}>
-          <BackToEditor />
-          <ShareLink />
-        </div>
+        {pathname === '/preview' && (
+          <div
+            className={cn(styles.headerContent, styles.previewHeaderContent)}
+          >
+            <BackToEditor />
+            <ShareLink />
+          </div>
+        )}
       </nav>
     );
   }

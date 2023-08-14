@@ -13,6 +13,7 @@ export const UploadPictureButton = () => {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     console.log(e.target.files);
     if (e.target.files) {
+      console.log(e.target.files[0]);
       dispatch(updateFile(URL.createObjectURL(e.target.files[0])));
     }
   }

@@ -7,6 +7,22 @@ router.get('/', (req, res) => {
   res.send('This works!');
 });
 
+router.get('/profs/:id', async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const profile = await ProfileModel.findOne({ id: req.params.id });
+
+    if (profile === null) {
+      throw new Error('no profile');
+    }
+    res.send(profile);
+  } catch (error) {
+    return res.status(404).send({
+      message: 'no such profile!',
+    });
+  }
+});
+
 router.post('/', async (req, res) => {
   let currentId = 0;
   await ProfileModel.findOne()

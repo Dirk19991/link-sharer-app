@@ -3,6 +3,7 @@ import MainPage from './main';
 import { Header } from 'widgets/header';
 import { ProfilePage } from './profile';
 import { PreviewPage } from './preview';
+import { IdPage } from './id';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -28,6 +29,15 @@ const router = createBrowserRouter([
       <>
         <Header />
         <PreviewPage />
+      </>
+    ),
+  },
+  {
+    path: '/profile/:id',
+    element: (
+      <>
+        <Header />
+        <IdPage />
       </>
     ),
   },

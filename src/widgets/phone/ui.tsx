@@ -28,4 +28,15 @@ export const Phone = ({ variant }: PhoneProps) => {
       </div>
     );
   }
+  if (variant === 'database') {
+    return (
+      <div className={styles.previewWrapper}>
+        <div className={styles.previewPhone}>
+          <Circle variant={variant} />
+          <PhonePersonalDetails variant={variant} />
+          <PhoneProfiles variant={variant} />
+        </div>
+      </div>
+    );
+  }
 };
