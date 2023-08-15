@@ -3,8 +3,11 @@ import styles from './styles.module.scss';
 import { PhoneProfiles } from 'entities/buttons/phoneProfiles';
 import { PhonePersonalDetails } from 'entities/phonePersonalDetails';
 import { PhoneProps } from './model/types';
+import { useAppSelector } from 'app/store';
 
 export const Phone = ({ variant }: PhoneProps) => {
+  const status = useAppSelector(state => state.getId.status);
+
   if (variant === 'profile') {
     return (
       <div className={styles.profileWrapper}>
@@ -29,7 +32,9 @@ export const Phone = ({ variant }: PhoneProps) => {
     );
   }
   if (variant === 'database') {
-    return (
+    return status === 'loading' ? (
+      <div>Loading...</div>
+    ) : (
       <div className={styles.previewWrapper}>
         <div className={styles.previewPhone}>
           <Circle variant={variant} />

@@ -16,11 +16,11 @@ export const PhoneProfileButton = ({
     <div className={cn(styles.wrapper, styles[`${platform.toLowerCase()}`])}>
       <a className={styles.link} href={link ? link : '/'}></a>
       <div className={styles.platformLogo}>
-        <img src={`./websites/${platform.toLowerCase()}.svg`} alt="platform" />
+        <img src={`/websites/${platform.toLowerCase()}.svg`} alt="platform" />
       </div>
       <div className={styles.platformName}>{platform}</div>
       <div className={styles.arrow}>
-        <img src="./arrow.svg" alt="arrow" />
+        <img src="/arrow.svg" alt="arrow" />
       </div>
     </div>
   );

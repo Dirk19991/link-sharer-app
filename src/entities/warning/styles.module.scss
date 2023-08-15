@@ -7,3 +7,19 @@
   color: green;
   font-size: 0.8rem;
 }
+
+.linkReady {
+  color: green;
+  font-size: 1.8rem;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration-color: transparent;
+  text-decoration-line: underline;
+  transition: all 0.2s;
+
+  &:hover {
+    text-decoration-color: green;
+  }
+}

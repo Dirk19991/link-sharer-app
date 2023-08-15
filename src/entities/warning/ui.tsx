@@ -3,12 +3,28 @@ import styles from './styles.module.scss';
 import { checkValidation } from 'shared/helpers/checkValidation';
 import { selectPersonalDetailsValues } from 'features/addPersonalDetails/model/selectors';
 import { selectMappedLinks } from 'features/addLink/model/selectors';
+import { Link } from 'react-router-dom';
 
 export const Warning = () => {
   const allLinks = useAppSelector(selectMappedLinks);
   const allPersonalDetails = useAppSelector(selectPersonalDetailsValues);
-
   const allIsValidated = checkValidation(allLinks.concat(allPersonalDetails));
+
+  const id = useAppSelector(state => state.shareLink.id);
+
+  if (id) {
+    return (
+      <div className={styles.linkReady}>
+        <span>
+          Great! Your personal page is on{' '}
+          <Link
+            to={`http://${window.location.host}/profile/${id}`}
+            className={styles.link}
+          >{`${window.location.host}/profile/${id}`}</Link>
+        </span>
+      </div>
+    );
+  }
 
   if (!allIsValidated) {
     return (

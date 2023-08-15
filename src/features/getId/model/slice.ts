@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { IdResponse, IdState } from './types';
+import { IdResponse, IdState, Status } from './types';
 
 const initialState: IdState = {
   profile: null,
+  status: 'idle',
 };
 
 export const getIdSlice = createSlice({
@@ -13,10 +14,13 @@ export const getIdSlice = createSlice({
     updateId: (state, action: PayloadAction<IdResponse>) => {
       state.profile = action.payload;
     },
+    updateStatus: (state, action: PayloadAction<Status>) => {
+      state.status = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateId } = getIdSlice.actions;
+export const { updateId, updateStatus } = getIdSlice.actions;
 
 export default getIdSlice.reducer;

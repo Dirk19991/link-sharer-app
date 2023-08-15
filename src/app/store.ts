@@ -3,6 +3,7 @@ import addLinkReducer from '../features/addLink/model/slice';
 import addPictureReducer from '../features/addPicture/model/slice';
 import addPersonalDetailsReducer from '../features/addPersonalDetails/model/slice';
 import getIdReducer from '../features/getId/model/slice';
+import shareLinkReducer from '../features/shareLink/model/slice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { combineReducers } from '@reduxjs/toolkit';
 const rootReducer = combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = combineReducers({
   addPicture: addPictureReducer,
   addPersonalDetails: addPersonalDetailsReducer,
   getId: getIdReducer,
+  shareLink: shareLinkReducer,
 });
 
 import {

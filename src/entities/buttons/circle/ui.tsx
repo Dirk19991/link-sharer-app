@@ -5,13 +5,19 @@ import cn from 'classnames';
 
 export const Circle = ({ variant }: CircleProps) => {
   const file = useAppSelector(state => state.addPicture.file);
+  const currentId = useAppSelector(state => state.getId.profile);
 
   return (
     <div
-      style={{ backgroundImage: `url(${file})`, backgroundSize: 'cover' }}
+      style={{
+        backgroundImage:
+          variant === 'database' ? `url(${currentId?.image})` : `url(${file})`,
+        backgroundSize: 'cover',
+      }}
       className={cn(
         styles.circle,
-        variant === 'preview' && styles.previewCircle,
+        (variant === 'preview' || variant === 'database') &&
+          styles.previewCircle,
       )}
     ></div>
   );

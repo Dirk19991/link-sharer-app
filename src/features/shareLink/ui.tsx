@@ -1,4 +1,4 @@
-import { useAppSelector } from 'app/store';
+import { useAppDispatch, useAppSelector } from 'app/store';
 import styles from './styles.module.scss';
 import { checkValidation } from 'shared/helpers/checkValidation';
 import cn from 'classnames';
@@ -19,6 +19,7 @@ import {
   uploadBytes,
 } from 'firebase/storage';
 import { v4 } from 'uuid';
+import { addShareLinkId } from './model/slice';
 
 const uploadImageFromBlob = async (blob: string) => {
   const response = await fetch(blob);
@@ -41,7 +42,7 @@ export const ShareLink = () => {
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
   >('idle');
-
+  const dispatch = useAppDispatch();
   const linksState = useAppSelector(state => state.addLink);
   const personalDetailsState = useAppSelector(
     state => state.addPersonalDetails,
@@ -102,7 +103,7 @@ export const ShareLink = () => {
         },
       });
       setStatus('success');
-      res.json().then(data => console.log(data));
+      res.json().then(data => dispatch(addShareLinkId(data.id)));
       return res;
     } catch (error) {
       console.log(error);

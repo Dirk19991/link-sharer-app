@@ -9,6 +9,19 @@ export const PhonePersonalDetails = ({
   const { name, surname, email } = useAppSelector(
     state => state.addPersonalDetails,
   );
+  const currentId = useAppSelector(state => state.getId.profile);
+
+  if (variant === 'database') {
+    return (
+      <div className={cn(styles.wrapper, styles.previewWrapper)}>
+        <div className={styles.name}>
+          {currentId?.name}
+          {currentId?.surname}
+        </div>
+        <div>{currentId?.email}</div>
+      </div>
+    );
+  }
 
   return (
     <div

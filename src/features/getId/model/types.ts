@@ -13,6 +13,9 @@ export interface IdResponse {
   image: string;
 }
 
+export type Status = 'idle' | 'loading' | 'success' | 'error';
+
 export interface IdState {
   profile: IdResponse | null;
+  status: Status;
 }
