@@ -15,7 +15,6 @@ export const PhoneProfiles = ({ variant }: PhoneProfilesProps) => {
     currentId && formatCurrentID(currentId);
 
   if (variant === 'database') {
-    console.log('database', currentId, currentIdActiveLinks);
     return (
       <div className={cn(styles.wrapper, styles.previewWrapper)}>
         {currentIdActiveLinks?.map(link => (
