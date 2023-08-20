@@ -3,7 +3,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import profileRoutes from './routes/profiles.js';
-import 'dotenv/config';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
