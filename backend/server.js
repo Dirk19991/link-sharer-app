@@ -23,3 +23,5 @@ mongoose
   })
   .then(() => app.listen(PORT, () => console.log('server running')));
 // start the Express server
+
+export default app;
