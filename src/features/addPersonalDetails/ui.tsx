@@ -22,19 +22,6 @@ export const AddName = () => {
       : dispatch(invalidateField(field));
   };
 
-  async function onClick() {
-    const newPerson = { github: 'ivan', facebook: 'lojkh', d: 'test' };
-    console.log(JSON.stringify(newPerson));
-    const res = await fetch('http://localhost:5050/profiles', {
-      method: 'POST',
-      body: JSON.stringify(newPerson),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    return res;
-  }
-
   return (
     <div className={styles.wrapper}>
       <label className={styles.label} htmlFor="name">
@@ -91,7 +78,6 @@ export const AddName = () => {
           </div>
         )}
       </label>
-      <button onClick={onClick}> </button>
     </div>
   );
 };

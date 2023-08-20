@@ -9,9 +9,7 @@ export const Circle = ({ variant }: CircleProps) => {
   const file = useAppSelector(state => state.addPicture.file);
   const currentId = useAppSelector(state => state.getId.profile);
   const image = currentId?.image;
-  const loaded = useProgressiveImage(image ? image : '');
-
-  console.log(variant === 'database' && !image);
+  const loaded = useProgressiveImage(image || '');
 
   if (variant === 'database' && !image) {
     return <div className={cn(styles.circle, styles.previewCircle)}></div>;
