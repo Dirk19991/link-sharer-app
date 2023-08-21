@@ -11,11 +11,8 @@ jobs:
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
 
-      - name: Build
-        run: npm run dev
-
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
-          wait-on: 'http://localhost:5173'
-          config: baseUrl=http://localhost:5173
+          wait-on: http://localhost:5173
+          start: npx vite --host
