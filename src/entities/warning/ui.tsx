@@ -28,7 +28,7 @@ export const Warning = () => {
 
   if (!allIsValidated) {
     return (
-      <div className={styles.error}>
+      <div className={styles.error} data-cy="validationError">
         Some values are incorrect or empty, please check your links and personal
         information
       </div>
@@ -36,7 +36,7 @@ export const Warning = () => {
   }
   if (allIsValidated) {
     return (
-      <div className={styles.success}>
+      <div className={styles.success} data-cy="shareLink">
         Click on "Share link" button to generate your personal page
       </div>
     );

@@ -6,7 +6,11 @@ export const AddLinkButton = ({ add }: AddLinkButtonProps) => {
   const dispatch = useAppDispatch();
 
   return (
-    <button onClick={() => dispatch(add())} className={styles.button}>
+    <button
+      onClick={() => dispatch(add())}
+      className={styles.button}
+      data-cy="addNewLink"
+    >
       + Add new link
     </button>
   );

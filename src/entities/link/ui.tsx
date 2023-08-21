@@ -49,6 +49,7 @@ export const Link = ({ index, remove }: LinkProps) => {
       </div>
       <div className={styles.label}>Platform</div>
       <Select
+        classNamePrefix="react-select"
         isMulti={false}
         className={styles.select}
         options={options}
@@ -75,9 +76,10 @@ export const Link = ({ index, remove }: LinkProps) => {
           className={styles.input}
           type="text"
           name="name"
+          data-cy="link"
         />
         {currentLinkValid === 'false' && (
-          <div className={styles.errorMessage}>
+          <div className={styles.errorMessage} data-cy="linkError">
             Please add valid link to {currentPlatform} (should include
             'https://' and the domain name)
           </div>

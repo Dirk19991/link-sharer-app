@@ -34,11 +34,14 @@ export const AddName = () => {
           className={styles.input}
           id="name"
           type="text"
+          data-cy="firstName"
         />
         {name.validated === 'false' && (
           <div className={styles.errorWrapper}>
             <div className={styles.hidden}>First name</div>
-            <div className={styles.errorMessage}>Please add valid name</div>
+            <div className={styles.errorMessage} data-cy="firstNameError">
+              Please add valid name
+            </div>
           </div>
         )}
       </label>
@@ -52,11 +55,14 @@ export const AddName = () => {
           className={styles.input}
           id="surname"
           type="text"
+          data-cy="lastName"
         />
         {surname.validated === 'false' && (
           <div className={styles.errorWrapper}>
             <div className={styles.hidden}>Last name</div>
-            <div className={styles.errorMessage}>Please add valid surname</div>
+            <div className={styles.errorMessage} data-cy="lastNameError">
+              Please add valid surname
+            </div>
           </div>
         )}
       </label>
@@ -70,11 +76,14 @@ export const AddName = () => {
           className={styles.input}
           id="email"
           type="text"
+          data-cy="email"
         />
         {email.validated === 'false' && (
           <div className={styles.errorWrapper}>
             <div className={styles.hidden}>Email</div>
-            <div className={styles.errorMessage}>Please add valid email</div>
+            <div className={styles.errorMessage} data-cy="emailError">
+              Please add valid email
+            </div>
           </div>
         )}
       </label>

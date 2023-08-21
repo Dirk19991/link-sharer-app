@@ -40,6 +40,7 @@ export const UploadPictureButton = () => {
           accept="image/*"
           type="file"
           onChange={handleChange}
+          data-cy="fileUpload"
         />
         {file && hovered ? (
           <div className={styles.hiddenButtonText}>
