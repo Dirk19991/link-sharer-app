@@ -12,7 +12,7 @@ export const ProfileDetailsButton = ({
       className={cn(styles.button, active && styles.active)}
     >
       <img src="/profile.svg" alt="profile" />
-      <p>Profile Details</p>
+      <p className={styles.buttonText}>Profile Details</p>
     </div>
   );
 };

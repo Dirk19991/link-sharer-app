@@ -1,5 +1,12 @@
+import { useMediaQuery } from 'shared/hooks/useMediaQuery';
 import styles from './styles.module.scss';
 
 export const PreviewButton = () => {
-  return <div className={styles.button}>Preview</div>;
+  const mobile = useMediaQuery('(max-width: 768px)');
+  console.log(mobile, 'previewButton');
+  return (
+    <div className={styles.button}>
+      {mobile ? <img className={styles.image} src="/eye.svg"></img> : 'Preview'}
+    </div>
+  );
 };

@@ -9,7 +9,7 @@ export const LinksButton = ({ active, onClick }: LinksProps) => {
       className={cn(styles.button, active && styles.active)}
     >
       <img src="/links.svg" alt="links" />
-      <p>Links</p>
+      <p className={styles.buttonText}>Links</p>
     </div>
   );
 };

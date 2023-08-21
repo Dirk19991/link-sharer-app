@@ -5,9 +5,18 @@
   background-color: var(--lightGrey);
   padding: 20px;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
 }
 
 .restriction {
   font-size: 0.8rem;
   max-width: 200px;
+
+  @media (max-width: 768px) {
+  }
 }

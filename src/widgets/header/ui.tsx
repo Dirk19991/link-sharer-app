@@ -8,10 +8,12 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { BackToEditor } from 'entities/buttons/backToEditor';
 import { ShareLink } from 'features/shareLink';
 import cn from 'classnames';
+// import { useMediaQuery } from 'shared/hooks/useMediaQuery';
 
 export const Header = () => {
   const [detailsActive, setDetailsActive] = useState(false);
   const [linksActive, setLinksActive] = useState(true);
+  // const desktop = useMediaQuery('(min-width: 768px)');
 
   const detailsHandler = () => {
     setDetailsActive(true);
@@ -26,6 +28,7 @@ export const Header = () => {
   const { id } = useParams();
   console.log(id);
 
+  // другой хедер для страниц превью и ссылки на профиль
   if (pathname === '/preview' || id) {
     return (
       <nav className={cn(styles.wrapper, styles.previewWrapper)}>

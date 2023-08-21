@@ -5,8 +5,22 @@
   gap: 5px;
   border-radius: 6px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    padding: 12px 18px;
+  }
 }
 
 .active {
   background-color: rgb(239, 235, 255);
+
+  > img {
+    filter: invert(32%) sepia(71%) saturate(7477%) hue-rotate(249deg)
+      brightness(100%) contrast(101%);
+  }
+}
+
+.buttonText {
+  @media (max-width: 768px) {
+    display: none;
+  }
 }

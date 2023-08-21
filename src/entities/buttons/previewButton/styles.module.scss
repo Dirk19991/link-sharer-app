@@ -16,4 +16,15 @@
   &:hover {
     background-color: var(--lightViolet);
   }
+
+  @media (max-width: 768px) {
+    width: 50px;
+  }
+}
+
+.image {
+  width: 50%;
+  height: 50%;
+  filter: invert(32%) sepia(71%) saturate(7477%) hue-rotate(249deg)
+    brightness(100%) contrast(101%);
 }
