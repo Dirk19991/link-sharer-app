@@ -55,7 +55,7 @@ export const UploadPictureButton = () => {
         ) : (
           <div className={cn(styles.buttonText, file && styles.hidden)}>
             <div>
-              <img src="./uploadPicture.svg" alt="uploadPicture" />
+              <img src="/uploadPicture.svg" alt="uploadPicture" />
             </div>
             <div>+ Upload Image</div>
           </div>

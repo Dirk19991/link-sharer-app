@@ -63,7 +63,7 @@ export const Link = ({ index, remove }: LinkProps) => {
       <div className={styles.label}>Link</div>
       <div className={styles.inputWrapper}>
         <div className={styles.linkIcon}>
-          <img src="./link.svg" alt="link" />
+          <img src="/link.svg" alt="link" />
         </div>
         <input
           autoComplete="off"
@@ -78,7 +78,8 @@ export const Link = ({ index, remove }: LinkProps) => {
         />
         {currentLinkValid === 'false' && (
           <div className={styles.errorMessage}>
-            Please add valid link to {currentPlatform}
+            Please add valid link to {currentPlatform} (should include
+            'https://' and the domain name)
           </div>
         )}
       </div>

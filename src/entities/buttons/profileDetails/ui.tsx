@@ -11,7 +11,7 @@ export const ProfileDetailsButton = ({
       onClick={onClick}
       className={cn(styles.button, active && styles.active)}
     >
-      <img src="./profile.svg" alt="profile" />
+      <img src="/profile.svg" alt="profile" />
       <p>Profile Details</p>
     </div>
   );

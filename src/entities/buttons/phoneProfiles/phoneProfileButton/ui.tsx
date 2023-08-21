@@ -9,7 +9,7 @@ export const PhoneProfileButton = ({
   return platform === null ? (
     <div className={styles.wrapper}>
       <div className={styles.arrow}>
-        <img src="./arrow.svg" alt="arrow" />
+        <img src="/arrow.svg" alt="arrow" />
       </div>
     </div>
   ) : (

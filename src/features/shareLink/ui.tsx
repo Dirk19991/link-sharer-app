@@ -56,6 +56,8 @@ export const ShareLink = () => {
     allLinksObjects.concat(allPersonalDetailsObjects),
   );
 
+  const port = import.meta.env.VITE_PORT as string;
+
   const shareLinkHandler: React.MouseEventHandler = async () => {
     if (!allIsValidated) return;
 
@@ -80,6 +82,7 @@ export const ShareLink = () => {
       const info = await uploadImageFromBlob(picture);
       const link = await getLinkFromFile(info);
 
+      console.log(picture ? link : null);
       const newPerson = {
         github: getPlatform(linksState, 'Github'),
         facebook: getPlatform(linksState, 'Facebook'),
@@ -91,11 +94,10 @@ export const ShareLink = () => {
         name: getPersonalDetail(personalDetailsState, 'name'),
         surname: getPersonalDetail(personalDetailsState, 'surname'),
         email: getPersonalDetail(personalDetailsState, 'email'),
-        image: link,
+        image: picture ? link : null,
       };
 
-      console.log(newPerson);
-      const res = await fetch('http://localhost:5050/profiles', {
+      const res = await fetch(`${port}/profiles`, {
         method: 'POST',
         body: JSON.stringify(newPerson),
         headers: {

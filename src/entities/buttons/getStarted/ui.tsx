@@ -8,7 +8,7 @@ export const GetStarted = () => {
   ) : (
     <div className={styles.wrapper}>
       <div>
-        <img src="./getStarted.svg" alt="getStarted" />
+        <img src="/getStarted.svg" alt="getStarted" />
       </div>
       <h2 className={styles.header}>Let's get you started</h2>
       <p className={styles.text}>

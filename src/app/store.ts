@@ -30,7 +30,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: ['addPicture'],
+  blacklist: ['addPicture', 'getId'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

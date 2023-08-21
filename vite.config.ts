@@ -12,4 +12,5 @@ export default defineConfig({
       input: '/src/index.tsx',
     },
   },
+  define: { 'process.env': process.env },
 });
